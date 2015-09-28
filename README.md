@@ -1,2 +1,2 @@
 # Python-Stuff
-Code dump
+Various small functions written in Python.
