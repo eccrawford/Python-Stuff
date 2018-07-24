@@ -73,11 +73,7 @@ def show(linkedList):
             ptr = current
             current = current['next']
             countJobs = countJobs + 1
-            if current == {}: # we have reached the last node, time to exit the loop
-                priority = priority + ptr['priority']
-                break
-            else: 
-                priority = priority + ptr['priority']
+            priority = priority + ptr['priority']
         average = priority/countJobs
         print("The number of jobs currently in the queue is ",countJobs," with average priority", average)
     else:
