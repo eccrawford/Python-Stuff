@@ -1,13 +1,4 @@
 import random
-###########################
-def func():
-    print 'call function func()'
-
-def do_n(func, n):
-    if n <= 0:
-        return
-    func()
-    do_n(func, n-1)
 
 ###########################
 def is_power(a, b):
@@ -42,26 +33,6 @@ def binSearch(nums, target, lowIndex=0, highIndex=None):
     else:
         return mid
 #############################
-def merge(lst1, lst2, lst3):
-    i1 = 0
-    i2 = 0
-    i3 = 0
-    merged = []
-    while i1 < len(lst1) and i2 < len(lst2) and i3 < len(lst3):
-        if lst1[i1] <= lst2[i2] and lst1[i1] <= lst3[i3]:
-            merged.append(lst1[i1])
-            i1 +=1
-        elif lst2[i2] <= lst1[i1] and lst2[i2] <= lst3[i3]:
-            merged.append(lst2[i2])
-            i2 +=1
-        elif lst3[i3] <= lst1[i1] and lst3[i3] <= lst2[i2]:
-            merged.append(lst3[i3])
-            i3 +=1
-            
-    merged.extend(lst1[i1:])
-    merged.extend(lst2[i2:])
-    merged.extend(lst3[i3:])
-    return merged
 
 def threeMerge(lst):
     if len(lst) < 2:
@@ -109,25 +80,7 @@ def threeQ(lst):
                 big2.append(lst[i])
         return threeQ(small1) + [pval1] + threeQ(equal1) + threeQ(big1) + [pval2] + threeQ(equal2) \
                + threeQ(big2)
-#############################
-def sort5(lst):
-    Lis = []
-    Lis2 = []
-    Lis3 = []
-    Lis4 = []
-    Lis5 = []
-    for element in lst:
-        if element == 1:
-            Lis.append(element)
-        elif element == 2:
-            Lis2.append(element)
-        elif element == 3:
-            Lis3.append(element)
-        elif element == 4:
-            Lis4.append(element)
-        else:
-            Lis5.append(element)
-    return Lis + Lis2 + Lis3 +Lis4 + Lis5
+
 #############################
 def suesylvestershuffle(lst): #randomly shuffles a list
     if len(lst) == 1:
@@ -169,3 +122,73 @@ def sumSquares(m, n):
     else:
         return m**2 + n**2 + sumSquares(m+1, n-1)
 #############################
+def printNums(num):
+    strnum = str(num)
+    if len(strnum) <= 1:
+        print(strnum)
+    else:
+        print(strnum[0])
+        return printNums(strnum[1:])
+
+#############################
+
+def numVowels(word):
+    vowels = "aeiou"
+    if len(word) == 1:
+        if word in vowels:
+            return 1
+        else:
+            return 0
+    else:
+        if word[0] in vowels:
+            return 1 + numVowels(word[1:])
+        else:
+            return 0 + numVowels(word[1:])
+
+#############################
+
+def remVowels(word):
+    vowels = "aeiou"
+    if len(word) <= 1:
+        if word in vowels:
+            word = word[1:]
+            return word
+        else:
+            return word
+    else:
+        if word[0] in vowels:
+            word = word[1:]
+            return remVowels(word)
+        else:
+            return word[0] + remVowels(word[1:])
+
+#############################
+
+def multiply(n,m):
+    if n > m:
+        return None
+    if n == m:
+        return m
+    else:
+        mid = (n+m)//2
+        return multiply(n,mid) * multiply(mid+1, m)
+
+#############################
+
+def swap(nums):
+    if len(nums) < 2:
+        return nums
+    else:
+        return [nums[1],nums[0]] + swap(nums[2:])
+
+#############################
+
+def checkLists(lis1, lis2):
+    if len(lis1) != len(lis2):
+        return False
+    if len(lis1) == 0 and len(lis2) == 0:
+        return True
+    if lis1[0] == lis2[0]:
+        return checkLists(lis1[1:],lis2[1:])
+    else:
+        return False
